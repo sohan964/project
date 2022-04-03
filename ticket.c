@@ -28,7 +28,7 @@ int main()
         case 4:{
                 printf("\n\tName: %s\n",name);
                 printf("\tPhone: %s\n",phone);
-                printf("\tTicket: %d\n",tickprintf("\tThank You!");et);
+                printf("\tTicket: %d\n",ticket);
                 printf("\tThank You!\n");
         } break;
         case 5:{
