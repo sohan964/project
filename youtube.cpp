@@ -11,35 +11,41 @@ class YouTubeChannel{
     protected:
     
     
-     public:
+     
         int ChannelID;
         string ChannelName;
         string OwnerName;
         int SubscriberCounts;
-        //int numberOfVideos;
-        //list<string> VideoList;
-      
+        int numberOfVideos;
+        list<string> VideoList;
+      public:
         //YouTubeChannel(int id, string nam, string onam, int subcnt){
         YouTubeChannel(){  
            cout<<"Enter Channel Id :"<<endl;
             cin>>ChannelID;
-            cout<<endl;
 
             cout<<"Enter Channel Name :\n";
             cin>>ChannelName;
-            cout<<endl;
 
             cout<<"Enter OwnerName :\n";
             cin>>OwnerName;
-            cout<<endl;
 
             cout<<"Enter Subscribers :\n";
             cin>>SubscriberCounts;
+            
+            cout<<"Enter How many video you want to uploade :\n";
+            
+            cin>>numberOfVideos;
+            for(int i=0;i<numberOfVideos;i++){
+                string s;
+                cin>>s;
+                VideoList.push_back(s);
+            }
             cout<<endl;
 
         }
        
-        //friend ostream& operator << (ostream& COUT, YouTubeChannel& ytChannel);
+        friend ostream& operator << (ostream& COUT, YouTubeChannel& ytChannel);
 
 };
 
@@ -52,13 +58,14 @@ ostream& operator << (ostream& COUT, YouTubeChannel& ytChannel){
        COUT<<"OwnerName: "<<ytChannel.OwnerName<<endl;
        COUT<<"Subscribers: "<<ytChannel.SubscriberCounts<<endl;
        
-    //   COUT<<"Videos: ";
-    //   for(auto u:ytChannel.VideoList) COUT<<u<<endl;
+      COUT<<"Videos: "<<ytChannel.numberOfVideos<<endl;
+      COUT<<"Enter Videolink: \n";
+      for(auto u:ytChannel.VideoList) COUT<<u<<endl;
      
        return COUT;
 }
 
-class SubscriptionList: virtual public YouTubeChannel{
+class SubscriptionList{
     private:
 
     protected:
@@ -76,7 +83,7 @@ class SubscriptionList: virtual public YouTubeChannel{
         }
 
 
-      // friend ostream& operator << (ostream& COUT, YouTubeChannel& ytChannel);
+      friend ostream& operator << (ostream& COUT, YouTubeChannel& ytChannel);
        
 };
 
@@ -90,19 +97,23 @@ ostream& operator << (ostream& COUT, SubscriptionList& cnllist){
 
 int main(){
     YouTubeChannel yt1;
+    YouTubeChannel yt2;
+    YouTubeChannel yt3;
+    SubscriptionList cnllist;
     
+    cnllist+=yt1;
+    cnllist+=yt2;
+    cnllist+=yt3;
     
+    cout<<cnllist;
+    
+    cnllist-=yt3;
+    
+    cout<<cnllist;
     
     // YouTubeChannel yt1(1,"Angry Prush","Prush",2880000);
     // // YouTubeChannel yt2(2,"Round2hell","Nazim",2500000);
     // // YouTubeChannel yt3(3,"AngryLive","Prush",300000);
-    
-    SubscriptionList cnllist;
-    
-    cnllist+=yt1;
-    
-    cout<<cnllist;
-    
 
 
     return 0;
