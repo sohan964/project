@@ -2,9 +2,6 @@
 #include<algorithm>
 using namespace std;
 
-
-
-
 class YouTubeChannel{
     private:
 
@@ -44,6 +41,10 @@ class YouTubeChannel{
             cout<<endl;
 
         }
+
+        bool operator==(const YouTubeChannel&channel) const{
+            return ChannelID == channel.ChannelID;
+        }
        
         friend ostream& operator << (ostream& COUT, YouTubeChannel& ytChannel);
 
@@ -81,6 +82,9 @@ class SubscriptionList{
             ChannelList.push_back(channel);
             
         }
+        void operator -=(YouTubeChannel& channel){
+            ChannelList.remove(channel);
+        }
 
 
       friend ostream& operator << (ostream& COUT, YouTubeChannel& ytChannel);
@@ -101,14 +105,15 @@ int main(){
     YouTubeChannel yt3;
     SubscriptionList cnllist;
     
+    
     cnllist+=yt1;
     cnllist+=yt2;
     cnllist+=yt3;
-    
+    cout<<"All channel list:\n";
     cout<<cnllist;
     
     cnllist-=yt3;
-    
+    cout<<"After remove, channel list:\n";
     cout<<cnllist;
     
     // YouTubeChannel yt1(1,"Angry Prush","Prush",2880000);
