@@ -35,7 +35,10 @@ class YouTubeChannel{
             cin>>numberOfVideos;
             for(int i=0;i<numberOfVideos;i++){
                 string s;
-                cin>>s;
+                char c;
+                cin>>c;
+                getline(cin,s);
+                s=c+s;
                 VideoList.push_back(s);
             }
             cout<<endl;
