@@ -33,6 +33,7 @@ class YouTubeChannel{
             cout<<"Enter How many video you want to uploade :\n";
             
             cin>>numberOfVideos;
+            cout<<"enter video titles :\n";
             for(int i=0;i<numberOfVideos;i++){
                 string s;
                 char c;
@@ -63,7 +64,7 @@ ostream& operator << (ostream& COUT, YouTubeChannel& ytChannel){
        COUT<<"Subscribers: "<<ytChannel.SubscriberCounts<<endl;
        
       COUT<<"Videos: "<<ytChannel.numberOfVideos<<endl;
-      COUT<<"Enter Videolink: \n";
+      COUT<<"Video Titles: \n";
       for(auto u:ytChannel.VideoList) COUT<<u<<endl;
      
        return COUT;
@@ -107,22 +108,18 @@ int main(){
     YouTubeChannel yt2;
     YouTubeChannel yt3;
     SubscriptionList cnllist;
-    
-    
+   
     cnllist+=yt1;
     cnllist+=yt2;
     cnllist+=yt3;
     cout<<"All channel list:\n";
     cout<<cnllist;
+    cout<<endl;
     
-    cnllist-=yt3;
+    cnllist-=yt1;
     cout<<"After remove, channel list:\n";
     cout<<cnllist;
     
-    // YouTubeChannel yt1(1,"Angry Prush","Prush",2880000);
-    // // YouTubeChannel yt2(2,"Round2hell","Nazim",2500000);
-    // // YouTubeChannel yt3(3,"AngryLive","Prush",300000);
-
 
     return 0;
 }
